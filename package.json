@@ -57,7 +57,7 @@
     ]
   },
   "jest-junit": {
-    "outputDirectory": "dist/docs",
+    "outputDirectory": "./dist/docs",
     "outputName": "./junit.xml"
   }
 }

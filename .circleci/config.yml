@@ -33,13 +33,9 @@ jobs:
       - run: 
           name: Test application
           command: yarn test
-          environment:
-            JEST_JUNIT_OUTPUT: "/dist/docs/test-results.xml"
       - store_artifacts:
-          path: /dist/docs/test-results.xml
+          path: dist/docs/junit.xml
           prefix: tests
-      - store_artifacts:
-          path: /dist/docs
 
   deploy:
     <<: *defaults
