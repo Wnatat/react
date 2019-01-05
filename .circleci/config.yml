@@ -41,17 +41,6 @@ jobs:
       - store_artifacts:
           path: /dist/docs
 
-  build:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-      - run: 
-          name: Build application
-          command: yarn build
-
   deploy:
     <<: *defaults
     steps:
@@ -67,8 +56,7 @@ jobs:
           command: |
             git config user.email "$GH_EMAIL"
             git config user.name "$GH_NAME"
-            ls -la
-            pwd
+            yarn build
             yarn deploy
 
 workflows:
@@ -79,13 +67,9 @@ workflows:
       - test:
           requires:
             - install
-      - build:
-          requires:
-            - install
       - deploy:
           requires:
             - test
-            - build
           filters:
             branches:
               only: master
