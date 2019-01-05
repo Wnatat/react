@@ -34,8 +34,10 @@ jobs:
           name: Test application
           command: yarn test
       - store_artifacts:
-          path: dist/docs/junit.xml
+          path: dist/docs/jest/junit.xml
           prefix: tests
+      - store_test_results:
+          path: dist/docs
 
   deploy:
     <<: *defaults
