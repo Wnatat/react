@@ -54,6 +54,9 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
       - add_ssh_keys:
           fingerprints:
             - "f2:b7:fc:0c:25:a9:77:fe:ea:59:fa:27:c3:43:3b:90"
