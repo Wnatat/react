@@ -33,8 +33,10 @@ jobs:
       - run: 
           name: Test application
           command: yarn test
+          environment:
+            JEST_JUNIT_OUTPUT: "/dist/docs/test-results.xml"
       - store_artifacts:
-          path: /dist/docs/clover.xml
+          path: /dist/docs/test-results.xml
           prefix: tests
       - store_artifacts:
           path: /dist/docs
@@ -60,8 +62,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "f2:b7:fc:0c:25:a9:77:fe:ea:59:fa:27:c3:43:3b:90"
-      - attach_workspace:
-          at: dist
       - run:
           name: Configure git and push to github page
           command: |
