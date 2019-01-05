@@ -64,7 +64,7 @@ jobs:
           command: |
             git config user.email "$GH_EMAIL"
             git config user.name "$GH_NAME"
-            gh-pages --repo "$REPOSITORY" --dist dist
+            ./node_modules/.bin/gh-pages --repo "$REPOSITORY" --dist dist
 
 workflows:
   version: 2
