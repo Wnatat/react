@@ -34,10 +34,10 @@ jobs:
           name: Test application
           command: yarn test
       - store_artifacts:
-          path: /coverage/clover.xml
+          path: /dist/docs/clover.xml
           prefix: tests
       - store_artifacts:
-          path: /coverage
+          path: /dist/docs
 
   build:
     <<: *defaults
@@ -67,7 +67,7 @@ jobs:
           command: |
             git config user.email "$GH_EMAIL"
             git config user.name "$GH_NAME"
-            yarn deploy
+            ./node_modules/.bin/gh-pages --repo "$REPOSITORY" --dist dist
 
 workflows:
   version: 2
