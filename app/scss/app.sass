@@ -1,0 +1,73 @@
+@import "~nes.css/css/nes";
+
+.droparea
+  position: absolute
+  width: 200px
+  height: 200px
+  border-width: 2px
+  border-color: #666
+  border-style: dashed
+  border-radius: 5px
+  padding: 10px
+  z-index: 10
+
+.droparea--active
+  border-style: solid
+  border-color: #6c6
+  background-color: #eee
+  
+.droparea--reject
+  border-style: solid
+  border-color: #c66
+  background-color: #eee
+
+.thumbs-container
+  width: 200px
+  height: 200px
+  opacity: 0.6
+  z-index: 1
+  margin: 0 0 30px 0;
+
+  > div
+    display: inline-flex
+    border-radius: 2px
+    border: 1px solid #eaeaea
+    height: 198px
+    width: 198px
+    padding: 4px
+    box-sizing: border-box
+
+    div
+      display: flex
+      overflow: hidden
+      justify-content: center
+      width: 100%
+
+      img
+        max-height: 100%
+
+ul.nes-list
+  columns: 4
+  -webkit-columns: 4
+  -moz-columns: 4
+
+.balloon.nes-container
+  .messages
+    display: flex
+    flex-direction: column
+  .message
+    display: flex
+    margin-bottom: 15px
+
+    i
+      align-self: flex-end;
+  .message.-left
+    align-self: flex-start
+  .message.-right
+    align-self: flex-end
+  .nes-balloon
+    max-width: 600px
+    margin: 2rem 2rem
+
+button.nes-btn
+  margin-bottom: 15px

@@ -1,0 +1,77 @@
+defaults: &defaults
+  docker:
+  - image: circleci/node:8
+
+version: 2
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+      - run: 
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: yarn test
+      - store_artifacts:
+          path: /coverage/clover.xml
+          prefix: tests
+      - store_artifacts:
+          path: /coverage
+
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: 
+          name: Build application
+          command: yarn build
+
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "f2:b7:fc:0c:25:a9:77:fe:ea:59:fa:27:c3:43:3b:90"
+      - attach_workspace:
+          at: dist
+      - run:
+          name: Configure git and push to github page
+          command: |
+            git config user.email "$GH_EMAIL"
+            git config user.name "$GH_NAME"
+            gh-pages --repo "$REPOSITORY" --dist docs/_build/html
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist dist
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - install
+      - test
+      - build
+      - deploy:
+          requires:
+            - test
+            - build
+          filters:
+            branches:
+              only: master
