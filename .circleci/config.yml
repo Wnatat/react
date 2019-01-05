@@ -67,7 +67,7 @@ jobs:
           command: |
             git config user.email "$GH_EMAIL"
             git config user.name "$GH_NAME"
-            ./node_modules/.bin/gh-pages --repo "$REPOSITORY" --dist dist
+            yarn deploy
 
 workflows:
   version: 2
