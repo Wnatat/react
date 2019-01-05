@@ -45,7 +45,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "test": "BASE_URL=https://example.com TIMEOUT=100 API_TOKEN=foo ENDPOINT=/image/tags jest --coverage",
+    "test": "BASE_URL=https://example.com TIMEOUT=100 API_TOKEN=foo ENDPOINT=/image/tags jest --coverage --coverageDirectory dist/docs",
     "build": "webpack --mode production",
     "deploy": "gh-pages --repo git@github.com:Wnatat/wnatat.github.io.git --branch master --dist dist"
   }
