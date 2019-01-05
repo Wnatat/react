@@ -67,6 +67,8 @@ jobs:
           command: |
             git config user.email "$GH_EMAIL"
             git config user.name "$GH_NAME"
+            ls -la
+            pwd
             yarn deploy
 
 workflows:
