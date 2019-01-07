@@ -1,5 +1,5 @@
-import PreviewPresenter from '../../../app/js/lib/presenters/PreviewPresenter'
-import UseCase from '../../../app/js/lib/useCases/PreviewUseCase'
+import PreviewPresenter from './PreviewPresenter'
+import UseCase from '../useCases/PreviewUseCase'
 
 describe('PreviewPresenter', () => {
   it('can update progress bar during file upload', () => {

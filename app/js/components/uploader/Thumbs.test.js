@@ -2,7 +2,7 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Thumbs from '../../../app/js/components/uploader/Thumbs'
+import Thumbs from './Thumbs'
 
 Enzyme.configure({ adapter: new Adapter() });
 

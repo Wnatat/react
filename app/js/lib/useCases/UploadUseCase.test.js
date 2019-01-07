@@ -1,5 +1,5 @@
-import UploadUseCase from '../../../app/js/lib/useCases/UploadUseCase'
-import FilesUpload from '../../../app/js/lib/entities/FilesUpload'
+import UploadUseCase from './UploadUseCase'
+import FilesUpload from '../entities/FilesUpload'
 import * as fs from 'fs';
 
 describe('UploadUseCase', () => {
@@ -9,7 +9,7 @@ describe('UploadUseCase', () => {
       upload: jest.fn()
     }
     gatewayMock.upload.mockReturnValue()
-    const file = fs.createReadStream(__dirname + '/../../../app/images/test.jpg')
+    const file = fs.createReadStream(__dirname + '/../../../images/test.jpg')
     const uploadUseCase = new UploadUseCase(gatewayMock, [file], [])
 
     // Act

@@ -2,7 +2,7 @@ import React from 'react'
 import {mount} from 'enzyme'
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Uploader from '../../app/js/components/Uploader'
+import Uploader from './Uploader'
 
 Enzyme.configure({ adapter: new Adapter() });
 

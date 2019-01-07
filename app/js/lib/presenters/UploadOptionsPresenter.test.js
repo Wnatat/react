@@ -1,4 +1,4 @@
-import UploadOptionsPresenter from '../../../app/js/lib/presenters/UploadOptionsPresenter'
+import UploadOptionsPresenter from './UploadOptionsPresenter'
 
 describe('UploadOptionsPresenter', () => {
   it('can present options for remote service gateway', () => {
