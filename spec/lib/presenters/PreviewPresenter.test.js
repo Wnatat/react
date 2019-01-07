@@ -9,19 +9,17 @@ describe('PreviewPresenter', () => {
         call: jest.fn() 
       }
     })
-    const componentMock = {
-      props: { thumbs: jest.fn() },
-      setState: jest.fn()
-    }
-    const previewPresenter = new PreviewPresenter(useCaseMock, componentMock)
+    const thumbsCallbackMock = jest.fn()
+    const stateCallbackMock = jest.fn()
+    const previewPresenter = new PreviewPresenter(useCaseMock, thumbsCallbackMock, stateCallbackMock)
 
     // Act
     previewPresenter.call()
 
     // Assert
     expect(useCaseMock).toHaveBeenCalled()
-    expect(componentMock.props.thumbs).toHaveBeenCalled()
-    expect(componentMock.setState).toHaveBeenCalled()
+    expect(thumbsCallbackMock).toHaveBeenCalled()
+    expect(stateCallbackMock).toHaveBeenCalled()
 
     // Teardown
   });

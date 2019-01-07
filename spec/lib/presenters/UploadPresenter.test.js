@@ -4,9 +4,7 @@ import UseCase from '../../../app/js/lib/useCases/UploadUseCase'
 describe('UploadPresenter', () => {
   it('can present results from remote service gateway', () => {
     // Arrange
-    const componentMock = {
-      props: { tags: jest.fn() }
-    }
+    const callbackMock = jest.fn()
     const uploadMock = {
       then: jest.fn(then => then(data()))
     }
@@ -16,7 +14,7 @@ describe('UploadPresenter', () => {
       call: useCaseMockCall
     }
 
-    const uploadPresenter = new UploadPresenter(useCaseMock, componentMock)
+    const uploadPresenter = new UploadPresenter(useCaseMock, callbackMock)
 
     // Act
     uploadPresenter.call()
@@ -24,7 +22,7 @@ describe('UploadPresenter', () => {
     // Assert
     expect(useCaseMock.call).toHaveBeenCalled()
     expect(uploadMock.then).toHaveBeenCalled()
-    expect(componentMock.props.tags).toHaveBeenCalled()
+    expect(callbackMock).toHaveBeenCalled()
   })
 })
 

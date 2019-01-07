@@ -1,6 +1,6 @@
 export default class UploadOptionsPresenter {
-  constructor(component) {
-    this.component = component
+  constructor(callback) {
+    this.callback = callback
   }
 
   call() {
@@ -10,7 +10,7 @@ export default class UploadOptionsPresenter {
   options() {
     return {
       onUploadProgress: (progressEvent) => {
-        this.component.props.progress(progressEvent.loaded, progressEvent.total)
+        this.callback(progressEvent.loaded, progressEvent.total)
       }
     }
   }

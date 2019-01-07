@@ -24,17 +24,25 @@ export default class Droparea extends Component {
   onDrop(files) {
     new PreviewPresenter(
       new PreviewUseCase(files),
-      this
+      this.props.thumbs,
+      this.setPreview
     ).call()
 
-    const options = new UploadOptionsPresenter(this).call()
+    const options = new UploadOptionsPresenter(this.props.progress).call()
 
     new UploadPresenter(new UploadUseCase(
         new ImmagaGateway(Axios),
         files,
         options
-      ), this
+      ), this.props.tags
     ).call()
+  }
+
+  setPreview = (preview) => {
+    this.setState({
+      files: this.preview,
+      progress: 0
+    })
   }
 
   onDragEnter() {

@@ -1,13 +1,13 @@
 export default class UploadPresenter {
-  constructor(useCase, component, files) {
+  constructor(useCase, callback, files) {
     this.upload = useCase.call(files)
-    this.component = component
+    this.callback = callback
   }
 
   call() {
     this.upload
       .then(res => {
-        this.component.props.tags(this.getTags(res.data))
+        this.callback(this.getTags(res.data))
       })
   }
 

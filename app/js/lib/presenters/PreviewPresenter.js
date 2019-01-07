@@ -1,13 +1,14 @@
 export default class PreviewPresenter {
-  constructor(useCase, component) {
+  constructor(useCase, thumbsCallback, stateCallback) {
     this.preview = useCase.call()
-    this.component = component
+    this.thumbsCallback = thumbsCallback
+    this.stateCallback = stateCallback
   }
 
   call() {
-    this.component.props.thumbs(this.preview)
+    this.thumbsCallback(this.preview)
 
-    this.component.setState({
+    this.stateCallback({
       files: this.preview,
       progress: 0
     })
