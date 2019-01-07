@@ -1,4 +1,4 @@
-import RevokeUseCase from '../../../app/js/lib/useCases/RevokeUseCase'
+import RevokeUseCase from './RevokeUseCase'
 import * as fs from 'fs';
 
 describe('RevokeUseCase', () => {
@@ -6,7 +6,7 @@ describe('RevokeUseCase', () => {
     // Arrange
     global.URL.revokeObjectURL = jest.fn();
     global.URL.revokeObjectURL.mockReturnValue('foo.jpeg')
-    const file = fs.createReadStream(__dirname + '/../../../app/images/test.jpg')
+    const file = fs.createReadStream(__dirname + '/../../../images/test.jpg')
     const revokeUseCase = new RevokeUseCase([file])
 
     // Act

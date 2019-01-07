@@ -1,5 +1,5 @@
-import UploadPresenter from '../../../app/js/lib/presenters/UploadPresenter'
-import UseCase from '../../../app/js/lib/useCases/UploadUseCase'
+import UploadPresenter from './UploadPresenter'
+import UseCase from '../useCases/UploadUseCase'
 
 describe('UploadPresenter', () => {
   it('can present results from remote service gateway', () => {

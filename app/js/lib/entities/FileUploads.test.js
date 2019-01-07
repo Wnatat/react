@@ -1,4 +1,4 @@
-import FilesUpload from '../../../app/js/lib/entities/FilesUpload'
+import FilesUpload from './FilesUpload'
 import FormData from 'form-data'
 import * as fs from 'fs';
 

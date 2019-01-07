@@ -1,5 +1,5 @@
-import ImmagaGateway from '../../../app/js/lib/gateways/ImmagaGateway'
-import FilesUpload from '../../../app/js/lib/entities/FilesUpload'
+import ImmagaGateway from './ImmagaGateway'
+import FilesUpload from '../entities/FilesUpload'
 import axios from 'axios'
 import * as fs from 'fs';
 import FormData from 'form-data'
@@ -15,7 +15,7 @@ describe('ImmagaGateway', () => {
     const resp = {data: [{name: 'Bob'}]}
     axiosMock.post.mockResolvedValue(resp)
     const immagaGateway = new ImmagaGateway(axios)
-    const file = fs.createReadStream(__dirname + '../../../.gititgnore')
+    const file = fs.createReadStream(__dirname + '../../../app/images/test.jpg')
     const filesUpload = new FilesUpload([file])
 
     // Act
