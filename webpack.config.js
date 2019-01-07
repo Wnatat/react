@@ -64,6 +64,16 @@ module.exports = {
       {
         test: /\.(jpe?g|png|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
         use: 'base64-inline-loader'
+      },
+      {
+        test: /\.(ico)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            context: 'app/images',
+            name: '[path][name].[ext]'
+          }
+        }
       }
     ]
   },
